@@ -32,7 +32,7 @@ int main() {
             }
         }
     } else {
-        std::cerr << "Failed to initialize I2C." << std::endl;
+        cerr << "Failed to initialize I2C." << endl;
     }
 
     return result;
