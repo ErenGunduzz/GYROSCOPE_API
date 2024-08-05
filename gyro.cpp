@@ -1,4 +1,11 @@
-#include <gyro.hpp>
+/**
+ * @file gyro.cpp
+ * @brief Implementation of gyroscope functions
+ * @author Eren Gunduz
+ * @date 05-08-2024
+ */
+
+#include "gyro.hpp"
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
@@ -9,78 +16,99 @@
 #include <stdint.h>
 #include <cmath>
 
-
 using namespace std;
 
+int fileDescriptor; /// Global file descriptor
+
+/**
+ * @brief Initialize I2C communication
+ * @return ReturnValues Indicates success or failure of I2C initialization
+ */
 ReturnValues initI2C() 
 {
+    ReturnValues result = SUCCESS;
+
     // Open I2C connection
-    if ((file = open(I2C_BUS, O_RDWR)) < 0)
+    if ((fileDescriptor = open(I2C_BUS, O_RDWR)) < 0)
     {
-        cerr << "I2C not opened!" << endl;
-        return_value = I2C_OPEN_ERR;     
+        cerr << "Failed to open I2C!" << endl;
+        result = I2C_OPEN_ERR;     
     }
 
-    return_value = SUCCESS;
-    return return_value;
+    return result;
 }
 
-ReturnValues readITG3200(int file) {
+/**
+ * @brief Read gyroscope data from ITG3200 sensor
+ * @param fileDesc File descriptor for I2C communication
+ * @return ReturnValues Indicates success or failure of reading operation
+ */
+ReturnValues readITG3200(int fileDesc) 
+{
+    ReturnValues result = SUCCESS;
     uint8_t buffer[6];
-    // Read gyro data from ITG3200
     buffer[0] = ITG3200_REG_GYRO_XOUT_H;
 
-    // set the I2C address for ITG3200
-    if (ioctl(file, I2C_SLAVE, ITG3200_ADDR) < 0) {
-        cerr << "Failed to set I2C address for ITG3200." << endl;
-        return_value = I2C_ADDR_SET_ERR;
-    }
-    else if (write(file, buffer, 1) != 1) {
-        cerr << "Failed to write to ITG3200 for gyro read." << endl;
-        return_value = FAIL_TO_WR_GYRO;
-    }
-    else if (read(file, buffer, 6) != 6) {
-        cerr << "Failed to read gyro data from ITG3200." << endl;
-        return_value = FAIL_TO_RD_GYRO;
-    }
-    else 
+    // Set the I2C address for ITG3200
+    if (ioctl(fileDesc, I2C_SLAVE, ITG3200_ADDR) < 0) 
     {
-        int16_t gyro_x = (buffer[0] << 8 | buffer[1]);
-        int16_t gyro_y = (buffer[2] << 8 | buffer[3]);
-        int16_t gyro_z = (buffer[4] << 8 | buffer[5]);
-        cout << "Gyro (x, y, z): " << gyro_x << ", " << gyro_y << ", " << gyro_z << endl;
-        return_value = SUCCESS;
-    }   
-    return return_value; 
+        cerr << "Failed to set I2C address for ITG3200." << endl;
+        result = I2C_ADDR_SET_ERR;
+    }
+    else if (write(fileDesc, buffer, 1) != 1) 
+    {
+        cerr << "Failed to write to ITG3200 for gyro read." << endl;
+        result = FAIL_TO_WR_GYRO;
+    }
+    else if (read(fileDesc, buffer, 6) != 6) 
+    {
+        cerr << "Failed to read gyro data from ITG3200." << endl;
+        result = FAIL_TO_RD_GYRO;
+    }
+    else
+    {
+        int16_t gyroX = (buffer[0] << 8 | buffer[1]);
+        int16_t gyroY = (buffer[2] << 8 | buffer[3]);
+        int16_t gyroZ = (buffer[4] << 8 | buffer[5]);
+        cout << "Gyro (x, y, z): " << gyroX << ", " << gyroY << ", " << gyroZ << endl;
+    }
+
+    return result;
 }
 
-ReturnValues readITG3205(int file) {
+/**
+ * @brief Read gyroscope data from ITG3205 sensor
+ * @param fileDesc File descriptor for I2C communication
+ * @return ReturnValues Indicates success or failure of reading operation
+ */
+ReturnValues readITG3205(int fileDesc) {
+    ReturnValues result = SUCCESS;
     uint8_t buffer[6];
-    // read gyro data from ITG3205
     buffer[0] = ITG3200_REG_GYRO_XOUT_H; // ITG3205 uses the same register addresses as ITG3200
 
-
-     // set the I2C address for ITG3205
-    if (ioctl(file, I2C_SLAVE, ITG3205_ADDR) < 0) {
-        cerr << "Failed to set I2C address for ITG3205." << endl;
-        return_value = I2C_ADDR_SET_ERR;
-    }
-    else if (write(file, buffer, 1) != 1) {
-        cerr << "Failed to write ITG3205 for gyro read." << endl;
-        return_value = FAIL_TO_WR_GYRO;
-    }
-    else if (read(file, buffer, 6) != 6) {
-        cerr << "Failed to read gyro data from ITG3205." << endl;
-        return_value = FAIL_TO_RD_GYRO;
-    }
-    else 
+    // Set the I2C address for ITG3205
+    if (ioctl(fileDesc, I2C_SLAVE, ITG3205_ADDR) < 0) 
     {
-        int16_t gyro_x = (buffer[0] << 8 | buffer[1]);
-        int16_t gyro_y = (buffer[2] << 8 | buffer[3]);
-        int16_t gyro_z = (buffer[4] << 8 | buffer[5]);
-
-        cout << "ITG3205 Gyro (x, y, z): " << gyro_x << ", " << gyro_y << ", " << gyro_z << endl;
-        return_value = SUCCESS;
+        cerr << "Failed to set I2C address for ITG3205." << endl;
+        result = I2C_ADDR_SET_ERR;
     }
-    return return_value;
+    else if (write(fileDesc, buffer, 1) != 1) 
+    {
+        cerr << "Failed to write to ITG3205 for gyro read." << endl;
+        result = FAIL_TO_WR_GYRO;
+    }
+    else if (read(fileDesc, buffer, 6) != 6) 
+    {
+        cerr << "Failed to read gyro data from ITG3205." << endl;
+        result = FAIL_TO_RD_GYRO;
+    }
+    else
+    {
+        int16_t gyroX = (buffer[0] << 8 | buffer[1]);
+        int16_t gyroY = (buffer[2] << 8 | buffer[3]);
+        int16_t gyroZ = (buffer[4] << 8 | buffer[5]);
+        cout << "ITG3205 Gyro (x, y, z): " << gyroX << ", " << gyroY << ", " << gyroZ << endl;
+    }
+
+    return result;
 }

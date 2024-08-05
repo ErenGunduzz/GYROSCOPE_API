@@ -1,42 +1,64 @@
+/**
+ * @file gyro.cpp
+ * @brief Implementation of gyroscope functions
+ * @author Eren Gunduz
+ * @date 05-08-2024
+ */
+
 #ifndef GYRO_HPP
 #define GYRO_HPP
 
 /**
- * @file gyro.hpp
- * @brief Gyroscope API header file
+ * @brief I2C address of ITG3200 sensor
  */
+#define ITG3200_ADDR 0x68
 
 /**
- * @brief A macro that store the address of ITG3200 sensor
- */
-// I2C addresses og gyro sensors
-#define ITG3200_ADDR 0x68
-/**
- * @brief A macro that store the address of ITG3205 sensor
+ * @brief I2C address of ITG3205 sensor
  */
 #define ITG3205_ADDR 0x68
 
 /**
- * @brief A macro that store the I2C bus info
+ * @brief I2C bus device file
  */
-// I2C bus
 #define I2C_BUS "/dev/i2c-1"
 
 /**
- * @brief A macro that store the address of ITG3200 sensor output register
+ * @brief Register address for gyro X-axis high byte output
  */
-// Register address for the sensors
 #define ITG3200_REG_GYRO_XOUT_H 0x1D
 
-enum ReturnValues {SUCCESS, I2C_OPEN_ERR, I2C_ADDR_SET_ERR, FAIL_TO_WR_GYRO, FAIL_TO_RD_GYRO};
+/**
+ * @brief Enumeration of return values for function calls
+ */
+enum ReturnValues {
+    SUCCESS,          /**< Operation completed successfully */
+    I2C_OPEN_ERR,     /**< Error opening I2C bus */
+    I2C_ADDR_SET_ERR, /**< Error setting I2C slave address */
+    FAIL_TO_WR_GYRO,  /**< Error writing to gyroscope */
+    FAIL_TO_RD_GYRO   /**< Error reading from gyroscope */
+};
 
-// Function prototypes
+/**
+ * @brief Initialize I2C communication
+ * @return ReturnValues Indicates success or failure of I2C initialization
+ */
 ReturnValues initI2C();
-ReturnValues readITG3200(int file);
-ReturnValues readITG3205(int file);
 
-ReturnValues return_value;
+/**
+ * @brief Read gyroscope data from ITG3200 sensor
+ * @param fileDesc File descriptor for I2C communication
+ * @return ReturnValues Indicates success or failure of reading operation
+ */
+ReturnValues readITG3200(int fileDesc);
 
-int file;
+/**
+ * @brief Read gyroscope data from ITG3205 sensor
+ * @param fileDesc File descriptor for I2C communication
+ * @return ReturnValues Indicates success or failure of reading operation
+ */
+ReturnValues readITG3205(int fileDesc);
+
+extern int fileDescriptor; /**< Global file descriptor for I2C communication */
 
 #endif // GYRO_HPP
