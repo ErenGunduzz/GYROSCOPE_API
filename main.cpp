@@ -1,6 +1,6 @@
 /**
- * @file gyro.cpp
- * @brief Implementation of gyroscope functions
+ * @file main.cpp
+ * @brief Main application for gyroscope data reading
  * @author Eren Gunduz
  * @date 05-08-2024
  */
@@ -9,33 +9,30 @@
 #include <unistd.h>
 #include <iostream>
 
+using namespace GyroSensor;
 using namespace std;
 
-/**
- * @brief Main function to initialize I2C and continuously read gyroscope data
- * @return int Return code indicating success or failure
- */
 int main() {
-    ReturnValues result = SUCCESS;
+    Gyroscope gyro;
+    Gyroscope::ReturnValues result;
     
     // Initialize I2C
-    if (initI2C() == SUCCESS) {
+    result = gyro.initI2C();
+    if (result == Gyroscope::SUCCESS) {
         // Read data from sensors and display on terminal
-        while (result == SUCCESS) {
-            result = readITG3200(fileDescriptor);
-            if (result == SUCCESS) {
-                result = readITG3205(fileDescriptor);
+        while (result == Gyroscope::SUCCESS) {
+            result = gyro.readITG3200();
+            if (result == Gyroscope::SUCCESS) {
+                result = gyro.readITG3205();
             }
 
-            if (result == SUCCESS) {
+            if (result == Gyroscope::SUCCESS) {
                 // Sleep for 1 second   
                 usleep(1000000);
             }
         }
-        close(fileDescriptor);
     } else {
-        cerr << "Failed to initialize I2C." << endl;
-        result = I2C_OPEN_ERR;
+        std::cerr << "Failed to initialize I2C." << std::endl;
     }
 
     return result;
