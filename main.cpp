@@ -9,29 +9,33 @@
 #include <unistd.h>
 #include <iostream>
 
+static const int SLEEP_TIME = 1000000; // as microseconds
+
 using namespace GyroSensor;
 using namespace std;
 
 int main() {
     Gyroscope gyro;
-    Gyroscope::ReturnValues result;
+    ReturnValues result;
     
     // Initialize I2C
     result = gyro.initI2C();
-    if (result == Gyroscope::SUCCESS) {
+    if (result == SUCCESS) {
         // Read data from sensors and display on terminal
-        while (result == Gyroscope::SUCCESS) {
+        while (result == SUCCESS) {
             result = gyro.readITG3200();
-            if (result == Gyroscope::SUCCESS) {
+            if (result == SUCCESS) {
                 result = gyro.readITG3205();
             }
 
-            if (result == Gyroscope::SUCCESS) {
+            if (result == SUCCESS) {
                 // Sleep for 1 second   
-                usleep(1000000);
+                usleep(SLEEP_TIME);
             }
         }
-    } else {
+    } 
+    else 
+    {
         cerr << "Failed to initialize I2C." << endl;
     }
 

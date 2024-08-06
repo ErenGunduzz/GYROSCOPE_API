@@ -40,9 +40,7 @@ namespace GyroSensor
 
 */
 
-class Gyroscope {
-public:
-    /**
+/**
      * @brief Enumeration of return values for function calls
      */
     enum ReturnValues {
@@ -52,6 +50,9 @@ public:
         FAIL_TO_WR_GYRO,  /**< Error writing to gyroscope */
         FAIL_TO_RD_GYRO   /**< Error reading from gyroscope */
     };
+
+class Gyroscope {
+public:
 
     /**
      * @brief Constructor for Gyroscope class
@@ -96,7 +97,7 @@ public:
     ReturnValues readITG3205();
 
 private:
-    int fileDescriptor; /**< File descriptor for I2C communication */
+    int mFileDescriptor;/**< File descriptor for I2C communication */     
 };
 
 } // namespace GyroSensor
