@@ -14,23 +14,28 @@ static const int SLEEP_TIME = 1000000; // as microseconds
 using namespace GyroSensor;
 using namespace std;
 
-int main() {
-    Gyroscope gyro;
+int main() 
+{
+    GyroOperations gyro;
     ReturnValues result;
     
     // Initialize I2C
     result = gyro.initI2C();
-    if (result == SUCCESS) {
+    if (result == SUCCESS) 
+    {
         // Read data from sensors and display on terminal
-        while (result == SUCCESS) {
-            result = gyro.readITG3200();
-            if (result == SUCCESS) {
-                result = gyro.readITG3205();
-            }
+        while (result == SUCCESS) 
+        {
+            result = gyro.readGyro();
 
-            if (result == SUCCESS) {
+            if (result == SUCCESS) 
+            {
                 // Sleep for 1 second   
                 usleep(SLEEP_TIME);
+            }
+            else 
+            {
+                cerr << "Failed to read GyroOperations data." << endl;
             }
         }
     } 

@@ -1,6 +1,6 @@
 /**
  * @file gyro.hpp
- * @brief Header file for Gyroscope class
+ * @brief Header file for GyroOperations class
  * @author Eren Gunduz
  * @date 05-08-2024
  */
@@ -14,14 +14,9 @@ namespace GyroSensor
     using namespace std;
 
 /**
- * @brief I2C address of ITG3200 sensor
- */
-#define ITG3200_ADDR 0x68
-
-/**
  * @brief I2C address of ITG3205 sensor
  */
-#define ITG3205_ADDR 0x68
+#define SENSOR_ADDR 0x68
 
 /**
  * @brief I2C bus device file
@@ -36,7 +31,7 @@ namespace GyroSensor
 
 
 /*!
-    @brief Class for Gyroscope operations
+    @brief Class for GyroOperations operations
 
 */
 
@@ -51,21 +46,21 @@ namespace GyroSensor
         FAIL_TO_RD_GYRO   /**< Error reading from gyroscope */
     };
 
-class Gyroscope {
+class GyroOperations {
 public:
 
     /**
-     * @brief Constructor for Gyroscope class
+     * @brief Constructor for GyroOperations class
      * @details There is no connection at the beginning. 
      */
-    Gyroscope();
+    GyroOperations();
 
     /**
-     * @brief Destructor for Gyroscope class
+     * @brief Destructor for GyroOperations class
      * @details It is used to close I2C communication 
      * after the end of operations. 
      */
-    ~Gyroscope();
+    ~GyroOperations();
 
     /**
      * @brief Initialize I2C communication
@@ -76,16 +71,6 @@ public:
     ReturnValues initI2C();
 
     /**
-     * @brief Read gyroscope data from ITG3200 sensor
-     * @details  This function reads the X, Y, and Z axis data from the ITG3200 gyroscope
-     * sensor using the I2C interface. It first sets the I2C address of the sensor,
-     * then writes the register address to initiate the read, and finally reads
-     * the 6 bytes of data representing the gyroscope's X, Y, and Z axis values.
-     * @return Return one of the status of ReturnValues enum.
-     */
-    ReturnValues readITG3200();
-
-    /**
      * @brief Read gyroscope data from ITG3205 sensor
      * @details This function reads the X, Y, and Z axis data from the ITG3205 gyroscope
      * sensor using the I2C interface. It first sets the I2C address of the sensor,
@@ -94,7 +79,7 @@ public:
      * The register addresses for the ITG3205 are the same as for the ITG3200.
      * @return Return one of the status of ReturnValues enum.
      */
-    ReturnValues readITG3205();
+    ReturnValues readGyro();
 
 private:
     int mFileDescriptor;/**< File descriptor for I2C communication */     
