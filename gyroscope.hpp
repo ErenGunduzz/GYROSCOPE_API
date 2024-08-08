@@ -46,14 +46,18 @@ struct GyroscopeData {
  */
 class GyroOperations {
 public:
-    static const uint8_t SENSOR_ADDR;         /**< I2C address of ITG3205 sensor */
+    static const uint8_t SENSOR_ADDR;         /**< I2C address of sensor */
     static const string I2C_BUS;         /**< I2C bus device file */
     static const uint8_t SENSOR_REG_GYRO_XOUT_H; /**< Register address for gyro X-axis high byte output */
     static const int NO_FILE_FD;
     static const int FILE_OP_VALUE;
+    static const int GYRO_WR_REG;
     static const int SHIFT_VALUE;
     static const size_t BUFFER_SIZE;
     static const size_t WR_REG_BUFFER_SIZE;
+    static const int X_AXIS_START_VALUE;
+    static const int Y_AXIS_START_VALUE;
+    static const int Z_AXIS_START_VALUE;
 
 
     /**
@@ -76,8 +80,8 @@ public:
     GyroError initialize();
 
     /**
-     * @brief Read gyroscope data from ITG3205 sensor
-     * @details Reads the X, Y, and Z axis data from the ITG3205 gyroscope sensor using the I2C interface.
+     * @brief Read gyroscope data from sensor
+     * @details Reads the X, Y, and Z axis data from the  gyroscope sensor using the I2C interface.
      * @return GyroError status of the operation.
      */
     GyroscopeData getGyroData();

@@ -21,10 +21,13 @@ const string GyroOperations::I2C_BUS = "/dev/i2c-1";
 const uint8_t GyroOperations::SENSOR_REG_GYRO_XOUT_H = 0x1D;
 const int GyroOperations::NO_FILE_FD = -1;
 const int GyroOperations::FILE_OP_VALUE = 0;
+const int GyroOperations::GYRO_WR_REG = 2;
 const int GyroOperations::SHIFT_VALUE = 8;
 const size_t GyroOperations::BUFFER_SIZE = 6;
 const size_t GyroOperations::WR_REG_BUFFER_SIZE = 1;
-const double GyroOperations::scaleFactor = 14.375; // 14.375 LSBs per °/sec
+const int GyroOperations::X_AXIS_START_VALUE = 0;
+const int GyroOperations::Y_AXIS_START_VALUE = 0;
+const int GyroOperations::Z_AXIS_START_VALUE = 0;
 
 GyroOperations::GyroOperations() {
     this->device = I2C_BUS;
@@ -45,7 +48,7 @@ GyroError GyroOperations::initialize() {
         cerr << "Failed to open I2C bus!" << endl;
         result = GyroError::I2C_OPEN_ERR;
     } else if (ioctl(mFileDescriptor, I2C_SLAVE, SENSOR_ADDR) < FILE_OP_VALUE) {
-        cerr << "Failed to set I2C address for ITG3205." << endl;
+        cerr << "Failed to set I2C address for sensor." << endl;
         result = GyroError::I2C_ADDR_SET_ERR;
     }
 
@@ -58,10 +61,10 @@ GyroError GyroOperations::readGyro(int16_t& x, int16_t& y, int16_t& z) {
     GyroError result = GyroError::SUCCESS;
 
     if (write(mFileDescriptor, buffer, WR_REG_BUFFER_SIZE) != WR_REG_BUFFER_SIZE) {
-        cerr << "Failed to write to ITG3205 for gyro read." << endl;
+        cerr << "Failed to write to sensor for gyro read." << endl;
         result = GyroError::FAIL_TO_WR_GYRO;
     } else if (read(mFileDescriptor, buffer, BUFFER_SIZE) != BUFFER_SIZE) {
-        cerr << "Failed to read gyro data from ITG3205." << endl;
+        cerr << "Failed to read gyro data from sensor." << endl;
         result = GyroError::FAIL_TO_RD_GYRO;
     } else {
         x = static_cast<int16_t>((buffer[0] << SHIFT_VALUE) | buffer[1]);
@@ -73,10 +76,10 @@ GyroError GyroOperations::readGyro(int16_t& x, int16_t& y, int16_t& z) {
 }
 
 GyroError GyroOperations::writeRegister(uint8_t reg, uint8_t value) {
-    uint8_t buffer[2] = { reg, value };
+    uint8_t buffer[GYRO_WR_REG] = { reg, value };
     GyroError result = GyroError::SUCCESS;
 
-    if (write(mFileDescriptor, buffer, 2) != 2) {
+    if (write(mFileDescriptor, buffer, GYRO_WR_REG) != GYRO_WR_REG) {
         cerr << "Failed to write to the i2c bus" << endl;
         result = GyroError::FAIL_TO_WR_GYRO;
     }
