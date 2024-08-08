@@ -5,44 +5,31 @@
  * @date 05-08-2024
  */
 
-#include "gyro.hpp"
-#include <unistd.h>
+#include "gyroscope.hpp"
 #include <iostream>
 
-static const int SLEEP_TIME = 1000000; // as microseconds
-
-using namespace GyroSensor;
 using namespace std;
+using namespace OBU;
 
-int main() 
+int main()
 {
-    GyroOperations gyro;
-    ReturnValues result;
-    
-    // Initialize I2C
-    result = gyro.initI2C();
-    if (result == SUCCESS) 
-    {
-        // Read data from sensors and display on terminal
-        while (result == SUCCESS) 
-        {
-            result = gyro.readGyro();
+    GyroOperations gyroOps;
+    GyroscopeData gyroData;
 
-            if (result == SUCCESS) 
-            {
-                // Sleep for 1 second   
-                usleep(SLEEP_TIME);
-            }
-            else 
-            {
-                cerr << "Failed to read GyroOperations data." << endl;
-            }
-        }
-    } 
-    else 
+    GyroError initResult = gyroOps.initialize();
+    if (initResult != GyroError::SUCCESS)
     {
-        cerr << "Failed to initialize I2C." << endl;
+        cerr << "Failed to initialize gyrsocope. Error code: " << static_cast<int>(initResult) << endl;
+        return -1;
     }
 
-    return result;
+    gyroData = gyroOps.getGyroData();
+
+    double x = static_cast<double>(gyroData.x);
+    double y = static_cast<double>(gyroData.y);
+    double z = static_cast<double>(gyroData.z);
+
+    cout << "Gyro x: " << x << " Gyro y: " << y << " Gyro z:  " << z << endl;
+
+    return 0;
 }
