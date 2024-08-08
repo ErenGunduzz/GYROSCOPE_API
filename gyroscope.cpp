@@ -102,7 +102,7 @@ GyroError GyroOperations::readRegisters(uint8_t reg, uint8_t* buffer, size_t len
 }
 
 GyroscopeData GyroOperations::getGyroData() {
-    int16_t x = 0, y = 0, z = 0;
+    int16_t x = X_AXIS_START_VALUE, y = Y_AXIS_START_VALUE, z = Z_AXIS_START_VALUE;
     GyroscopeData gyroData;
 
     if (readGyro(x, y, z) == GyroError::SUCCESS) {
