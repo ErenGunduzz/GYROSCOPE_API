@@ -7,6 +7,7 @@
 
 #include "gyroscope.hpp"
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
 using namespace OBU;
@@ -19,17 +20,22 @@ int main()
     GyroError initResult = gyroOps.initialize();
     if (initResult != GyroError::SUCCESS)
     {
-        cerr << "Failed to initialize gyrsocope. Error code: " << static_cast<int>(initResult) << endl;
+        cerr << "Failed to initialize gyroscope. Error code: " << static_cast<int>(initResult) << endl;
         return -1;
     }
 
-    gyroData = gyroOps.getGyroData();
+    while (true)
+    {
+        gyroData = gyroOps.getGyroData();
 
-    double x = static_cast<double>(gyroData.x);
-    double y = static_cast<double>(gyroData.y);
-    double z = static_cast<double>(gyroData.z);
+        double x = static_cast<double>(gyroData.x);
+        double y = static_cast<double>(gyroData.y);
+        double z = static_cast<double>(gyroData.z);
 
-    cout << "Gyro x: " << x << " Gyro y: " << y << " Gyro z:  " << z << endl;
+        cout << "Gyro x: " << x << " Gyro y: " << y << " Gyro z: " << z << endl;
+
+        usleep(1000000);
+    }
 
     return 0;
 }
