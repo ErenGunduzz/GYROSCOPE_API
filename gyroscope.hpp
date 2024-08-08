@@ -112,7 +112,7 @@ private:
      */
     GyroError readRegisters(uint8_t reg, uint8_t* buffer, size_t length);
 
-    static constexpr double scaleFactor = 14.375; /**< Scale factor for converting raw data to degrees per second */
+    double scaleFactor = 14.375; /**< Scale factor for converting raw data to degrees per second */
 };
 
 } // namespace OBU

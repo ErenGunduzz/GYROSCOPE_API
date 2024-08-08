@@ -24,6 +24,7 @@ const int GyroOperations::FILE_OP_VALUE = 0;
 const int GyroOperations::SHIFT_VALUE = 8;
 const size_t GyroOperations::BUFFER_SIZE = 6;
 const size_t GyroOperations::WR_REG_BUFFER_SIZE = 1;
+const double GyroOperations::scaleFactor = 14.375; // 14.375 LSBs per °/sec
 
 GyroOperations::GyroOperations() {
     this->device = I2C_BUS;
