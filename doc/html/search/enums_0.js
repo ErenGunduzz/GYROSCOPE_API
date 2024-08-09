@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['returnvalues_41',['ReturnValues',['../namespaceGyroSensor.html#a6ae7519dbc8c35ee06ea6286c477e128',1,'GyroSensor']]]
+  ['gyroerror_69',['GyroError',['../namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6',1,'OBU']]]
 ];

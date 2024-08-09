@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['gyro_2ecpp_30',['gyro.cpp',['../gyro_8cpp.html',1,'']]],
-  ['gyro_2ehpp_31',['gyro.hpp',['../gyro_8hpp.html',1,'']]]
+  ['gyroscope_2ecpp_40',['gyroscope.cpp',['../gyroscope_8cpp.html',1,'']]],
+  ['gyroscope_2ehpp_41',['gyroscope.hpp',['../gyroscope_8hpp.html',1,'']]]
 ];

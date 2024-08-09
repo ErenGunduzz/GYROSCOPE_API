@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gyroscope_28',['Gyroscope',['../classGyroSensor_1_1Gyroscope.html',1,'GyroSensor']]]
+  ['gyrooperations_37',['GyroOperations',['../classOBU_1_1GyroOperations.html',1,'OBU']]],
+  ['gyroscopedata_38',['GyroscopeData',['../structOBU_1_1GyroscopeData.html',1,'OBU']]]
 ];

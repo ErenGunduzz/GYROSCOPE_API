@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gyroscope_33',['Gyroscope',['../classGyroSensor_1_1Gyroscope.html#a6317e90cd79846be72bc9a568d3ba068',1,'GyroSensor::Gyroscope']]]
+  ['getgyrodata_43',['getGyroData',['../classOBU_1_1GyroOperations.html#aadcaec42a109c9a2962cc8768157b506',1,'OBU::GyroOperations']]],
+  ['gyrooperations_44',['GyroOperations',['../classOBU_1_1GyroOperations.html#a543d6164eb7860f473bf14dd0fd38c8c',1,'OBU::GyroOperations']]]
 ];
