@@ -1,6 +1,6 @@
 /**
- * @file gyro.hpp
- * @brief Header file for GyroOperations class
+ * @file gyroscope.hpp
+ * @brief Header file for Gyroscope operations
  * @author Eren Gunduz
  * @date 05-08-2024
  */
@@ -10,13 +10,13 @@
 
 #include <string>
 
-using namespace std;
-
 /**
  * @namespace OBU
  * @brief Namespace for OBU-related classes and functions
  */
 namespace OBU {
+
+    using namespace std;
 
 /**
  * @enum GyroError
@@ -27,7 +27,11 @@ enum class GyroError {
     I2C_OPEN_ERR,     /**< Error opening I2C bus */
     I2C_ADDR_SET_ERR, /**< Error setting I2C slave address */
     FAIL_TO_WR_GYRO,  /**< Error writing to gyroscope */
-    FAIL_TO_RD_GYRO   /**< Error reading from gyroscope */
+    FAIL_TO_RD_GYRO,   /**< Error reading from gyroscope */
+    INITIALIZATION_FAILED, /**< Error setting power mode */
+    DATA_READ_FAILED, /**< Error data read */
+    I2C_WRITE_ERR,
+    I2C_READ_ERR
 };
 
 /**
@@ -46,25 +50,12 @@ struct GyroscopeData {
  */
 class GyroOperations {
 public:
-    static const uint8_t SENSOR_ADDR;         /**< I2C address of sensor */
-    static const string I2C_BUS;         /**< I2C bus device file */
-    static const uint8_t SENSOR_REG_GYRO_XOUT_H; /**< Register address for gyro X-axis high byte output */
-    static const int NO_FILE_FD;
-    static const int FILE_OP_VALUE;
-    static const int GYRO_WR_REG;
-    static const int SHIFT_VALUE;
-    static const size_t BUFFER_SIZE;
-    static const size_t WR_REG_BUFFER_SIZE;
-    static const int X_AXIS_START_VALUE;
-    static const int Y_AXIS_START_VALUE;
-    static const int Z_AXIS_START_VALUE;
-
 
     /**
      * @brief Constructor for GyroOperations class
      * @details There is no connection at the beginning.
      */
-    explicit GyroOperations();
+    GyroOperations();
 
     /**
      * @brief Destructor for GyroOperations class
@@ -89,6 +80,21 @@ public:
 private:
     string device;              /**< I2C device file */
     int mFileDescriptor;        /**< File descriptor for I2C communication */
+    static const uint8_t SENSOR_ADDR;         /**< I2C address of sensor */
+    static const string I2C_BUS;         /**< I2C bus device file */
+    static const uint8_t SENSOR_REG_GYRO_XOUT_H; /**< Register address for gyro X-axis high byte output */
+    static const uint8_t SENSOR_REG_POWER_CTL;
+    static const uint8_t SENSOR_REG_DATAX0;
+    static const uint8_t SENSOR_MEASURE_MODE;
+    static const int NO_FILE_FD;
+    static const int FILE_OP_VALUE;
+    static const int GYRO_WR_REG;
+    static const int SHIFT_VALUE;
+    static const size_t BUFFER_SIZE;
+    static const size_t WR_REG_BUFFER_SIZE;
+    static const int X_AXIS_START_VALUE;
+    static const int Y_AXIS_START_VALUE;
+    static const int Z_AXIS_START_VALUE;
 
     /**
      * @brief Reads gyroscope data from the sensor
@@ -97,7 +103,7 @@ private:
      * @param z Reference to store Z-axis data
      * @return GyroError status of the operation
      */
-    GyroError readGyro(int16_t& x, int16_t& y, int16_t& z);
+   GyroError readGyro(double& x, double& y, double& z);
 
     /**
      * @brief Writes a value to a gyroscope register
@@ -116,7 +122,7 @@ private:
      */
     GyroError readRegisters(uint8_t reg, uint8_t* buffer, size_t length);
 
-    double scaleFactor = 14.375; /**< Scale factor for converting raw data to degrees per second */
+    double scaleFactor = 131.0; /**< Scale factor for MPU6050 for converting raw data to degrees per second */
 };
 
 } // namespace OBU

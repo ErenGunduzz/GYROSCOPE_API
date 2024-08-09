@@ -28,13 +28,13 @@ int main()
     {
         gyroData = gyroOps.getGyroData();
 
-        double x = static_cast<double>(gyroData.x);
-        double y = static_cast<double>(gyroData.y);
-        double z = static_cast<double>(gyroData.z);
+        double x = gyroData.x;
+        double y = gyroData.y;
+        double z = gyroData.z;
 
         cout << "Gyro x: " << x << " Gyro y: " << y << " Gyro z: " << z << endl;
 
-        usleep(1000000);
+        usleep(1000000); // Sleep for 1 second
     }
 
     return 0;
