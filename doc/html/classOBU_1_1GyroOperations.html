@@ -67,9 +67,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classOBU_1_1GyroOperations-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">OBU::GyroOperations Class Reference</div>  </div>
@@ -96,14 +96,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aadcaec42a109c9a2962cc8768157b506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read gyroscope data from sensor.  <a href="classOBU_1_1GyroOperations.html#aadcaec42a109c9a2962cc8768157b506">More...</a><br /></td></tr>
 <tr class="separator:aadcaec42a109c9a2962cc8768157b506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a83c4bca9f359ca89958521453f1024bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a83c4bca9f359ca89958521453f1024bb">readGyro</a> (double &amp;x, double &amp;y, double &amp;z)</td></tr>
+<tr class="memdesc:a83c4bca9f359ca89958521453f1024bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads gyroscope data from the sensor.  <a href="classOBU_1_1GyroOperations.html#a83c4bca9f359ca89958521453f1024bb">More...</a><br /></td></tr>
+<tr class="separator:a83c4bca9f359ca89958521453f1024bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad668c49b0075ec2415e5575911f73751"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#ad668c49b0075ec2415e5575911f73751">writeRegister</a> (uint8_t reg, uint8_t value)</td></tr>
+<tr class="memdesc:ad668c49b0075ec2415e5575911f73751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a gyroscope register.  <a href="classOBU_1_1GyroOperations.html#ad668c49b0075ec2415e5575911f73751">More...</a><br /></td></tr>
+<tr class="separator:ad668c49b0075ec2415e5575911f73751"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf126bb341112c9e4faa81b7d4ece412"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aaf126bb341112c9e4faa81b7d4ece412">readRegisters</a> (uint8_t reg, uint8_t *buffer, size_t length)</td></tr>
+<tr class="memdesc:aaf126bb341112c9e4faa81b7d4ece412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads values from gyroscope registers.  <a href="classOBU_1_1GyroOperations.html#aaf126bb341112c9e4faa81b7d4ece412">More...</a><br /></td></tr>
+<tr class="separator:aaf126bb341112c9e4faa81b7d4ece412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a12f2518e396a5dd89cd1f11d12ea0447"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a12f2518e396a5dd89cd1f11d12ea0447">device</a></td></tr>
+<tr class="separator:a12f2518e396a5dd89cd1f11d12ea0447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd57a470a03d1519c4df4a356bb3f60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aedd57a470a03d1519c4df4a356bb3f60">mFileDescriptor</a></td></tr>
+<tr class="separator:aedd57a470a03d1519c4df4a356bb3f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2688ef953f0228ec8b3c1627f765a925"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a2688ef953f0228ec8b3c1627f765a925">scaleFactor</a> = 131.0</td></tr>
+<tr class="separator:a2688ef953f0228ec8b3c1627f765a925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
 <tr class="memitem:a6bfd75e977a60da5c3a111ae4bac0858"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a6bfd75e977a60da5c3a111ae4bac0858">SENSOR_ADDR</a> = 0x68</td></tr>
 <tr class="separator:a6bfd75e977a60da5c3a111ae4bac0858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba74f8b65235dc133a48caab65d801c0"><td class="memItemLeft" align="right" valign="top">static const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aba74f8b65235dc133a48caab65d801c0">I2C_BUS</a> = &quot;/dev/i2c-1&quot;</td></tr>
 <tr class="separator:aba74f8b65235dc133a48caab65d801c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f06bd81c5171f3461c54edcd1792c38"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a6f06bd81c5171f3461c54edcd1792c38">SENSOR_REG_GYRO_XOUT_H</a> = 0x1D</td></tr>
+<tr class="memitem:a6f06bd81c5171f3461c54edcd1792c38"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a6f06bd81c5171f3461c54edcd1792c38">SENSOR_REG_GYRO_XOUT_H</a> = 0x43</td></tr>
 <tr class="separator:a6f06bd81c5171f3461c54edcd1792c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2abf98da6fe22aff8221cc4eb78cc9f"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#ae2abf98da6fe22aff8221cc4eb78cc9f">SENSOR_REG_POWER_CTL</a> = 0x6B</td></tr>
+<tr class="separator:ae2abf98da6fe22aff8221cc4eb78cc9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9ff455cb1ff144e424bf05f37bc816"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#adf9ff455cb1ff144e424bf05f37bc816">SENSOR_REG_DATAX0</a></td></tr>
+<tr class="separator:adf9ff455cb1ff144e424bf05f37bc816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2cc1dee3d917203154eb60e5bd7ef2"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a2b2cc1dee3d917203154eb60e5bd7ef2">SENSOR_MEASURE_MODE</a> = 0x00</td></tr>
+<tr class="separator:a2b2cc1dee3d917203154eb60e5bd7ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea2aa9ccfdad9d83c47a350796ff4812"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aea2aa9ccfdad9d83c47a350796ff4812">NO_FILE_FD</a> = -1</td></tr>
 <tr class="separator:aea2aa9ccfdad9d83c47a350796ff4812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cf24e8b3c00cd8b84208b36cd52c6e1"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a6cf24e8b3c00cd8b84208b36cd52c6e1">FILE_OP_VALUE</a> = 0</td></tr>
@@ -122,27 +149,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:af74f1098e816cb89df69bc98b25273b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf4d33b5dc145106c432ac9fe42f1705"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#acf4d33b5dc145106c432ac9fe42f1705">Z_AXIS_START_VALUE</a> = 0</td></tr>
 <tr class="separator:acf4d33b5dc145106c432ac9fe42f1705"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a2ec0ca03a543717d009c8f0e7a01dd90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a2ec0ca03a543717d009c8f0e7a01dd90">readGyro</a> (int16_t &amp;x, int16_t &amp;y, int16_t &amp;z)</td></tr>
-<tr class="memdesc:a2ec0ca03a543717d009c8f0e7a01dd90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads gyroscope data from the sensor.  <a href="classOBU_1_1GyroOperations.html#a2ec0ca03a543717d009c8f0e7a01dd90">More...</a><br /></td></tr>
-<tr class="separator:a2ec0ca03a543717d009c8f0e7a01dd90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad668c49b0075ec2415e5575911f73751"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#ad668c49b0075ec2415e5575911f73751">writeRegister</a> (uint8_t reg, uint8_t value)</td></tr>
-<tr class="memdesc:ad668c49b0075ec2415e5575911f73751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a gyroscope register.  <a href="classOBU_1_1GyroOperations.html#ad668c49b0075ec2415e5575911f73751">More...</a><br /></td></tr>
-<tr class="separator:ad668c49b0075ec2415e5575911f73751"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf126bb341112c9e4faa81b7d4ece412"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aaf126bb341112c9e4faa81b7d4ece412">readRegisters</a> (uint8_t reg, uint8_t *buffer, size_t length)</td></tr>
-<tr class="memdesc:aaf126bb341112c9e4faa81b7d4ece412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads values from gyroscope registers.  <a href="classOBU_1_1GyroOperations.html#aaf126bb341112c9e4faa81b7d4ece412">More...</a><br /></td></tr>
-<tr class="separator:aaf126bb341112c9e4faa81b7d4ece412"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a12f2518e396a5dd89cd1f11d12ea0447"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a12f2518e396a5dd89cd1f11d12ea0447">device</a></td></tr>
-<tr class="separator:a12f2518e396a5dd89cd1f11d12ea0447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedd57a470a03d1519c4df4a356bb3f60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aedd57a470a03d1519c4df4a356bb3f60">mFileDescriptor</a></td></tr>
-<tr class="separator:aedd57a470a03d1519c4df4a356bb3f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2688ef953f0228ec8b3c1627f765a925"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#a2688ef953f0228ec8b3c1627f765a925">scaleFactor</a> = 14.375</td></tr>
-<tr class="separator:a2688ef953f0228ec8b3c1627f765a925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa5fa319ba3e6b345213097680cc8c22"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOBU_1_1GyroOperations.html#aaa5fa319ba3e6b345213097680cc8c22">BUFFER_START_VALUE</a> = 0</td></tr>
+<tr class="separator:aaa5fa319ba3e6b345213097680cc8c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for managing gyroscope operations. </p>
@@ -152,9 +160,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">OBU::GyroOperations::GyroOperations </td>
@@ -163,11 +168,6 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Constructor for <a class="el" href="classOBU_1_1GyroOperations.html" title="Class for managing gyroscope operations.">GyroOperations</a> class. </p>
@@ -212,7 +212,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Read gyroscope data from sensor. </p>
-<p>Reads the X, Y, and Z axis data from the gyroscope sensor using the I2C interface. </p><dl class="section return"><dt>Returns</dt><dd>GyroError status of the operation. </dd></dl>
+<p>Reads the X, Y, and Z axis data as degree per second from the gyroscope sensor using the I2C interface. </p><dl class="section return"><dt>Returns</dt><dd>GyroError status of the operation. </dd></dl>
 
 </div>
 </div>
@@ -236,8 +236,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2ec0ca03a543717d009c8f0e7a01dd90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ec0ca03a543717d009c8f0e7a01dd90">&#9670;&nbsp;</a></span>readGyro()</h2>
+<a id="a83c4bca9f359ca89958521453f1024bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c4bca9f359ca89958521453f1024bb">&#9670;&nbsp;</a></span>readGyro()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,19 +248,19 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="namespaceOBU.html#acb03317d5e00b18bacba2ccc8aecf7b6">GyroError</a> OBU::GyroOperations::readGyro </td>
           <td>(</td>
-          <td class="paramtype">int16_t &amp;&#160;</td>
+          <td class="paramtype">double &amp;&#160;</td>
           <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int16_t &amp;&#160;</td>
+          <td class="paramtype">double &amp;&#160;</td>
           <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int16_t &amp;&#160;</td>
+          <td class="paramtype">double &amp;&#160;</td>
           <td class="paramname"><em>z</em>&#160;</td>
         </tr>
         <tr>
@@ -404,7 +404,29 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa5fa319ba3e6b345213097680cc8c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa5fa319ba3e6b345213097680cc8c22">&#9670;&nbsp;</a></span>BUFFER_START_VALUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int OBU::GyroOperations::BUFFER_START_VALUE = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -449,7 +471,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -471,7 +493,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -493,7 +515,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -539,7 +561,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -556,7 +578,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double OBU::GyroOperations::scaleFactor = 14.375</td>
+          <td class="memname">double OBU::GyroOperations::scaleFactor = 131.0</td>
         </tr>
       </table>
   </td>
@@ -565,7 +587,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Scale factor for converting raw data to degrees per second </p>
+<p>Scale factor for MPU6050 for converting raw data to degrees per second </p>
 
 </div>
 </div>
@@ -584,11 +606,55 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>I2C address of sensor </p>
+
+</div>
+</div>
+<a id="a2b2cc1dee3d917203154eb60e5bd7ef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b2cc1dee3d917203154eb60e5bd7ef2">&#9670;&nbsp;</a></span>SENSOR_MEASURE_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t OBU::GyroOperations::SENSOR_MEASURE_MODE = 0x00</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf9ff455cb1ff144e424bf05f37bc816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf9ff455cb1ff144e424bf05f37bc816">&#9670;&nbsp;</a></span>SENSOR_REG_DATAX0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t OBU::GyroOperations::SENSOR_REG_DATAX0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -602,16 +668,38 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const uint8_t OBU::GyroOperations::SENSOR_REG_GYRO_XOUT_H = 0x1D</td>
+          <td class="memname">const uint8_t OBU::GyroOperations::SENSOR_REG_GYRO_XOUT_H = 0x43</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>Register address for gyro X-axis high byte output </p>
+
+</div>
+</div>
+<a id="ae2abf98da6fe22aff8221cc4eb78cc9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2abf98da6fe22aff8221cc4eb78cc9f">&#9670;&nbsp;</a></span>SENSOR_REG_POWER_CTL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t OBU::GyroOperations::SENSOR_REG_POWER_CTL = 0x6B</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -630,7 +718,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -652,7 +740,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -674,7 +762,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -696,7 +784,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -718,7 +806,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
