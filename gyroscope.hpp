@@ -26,10 +26,7 @@ enum class GyroError {
     SUCCESS,          /**< Operation completed successfully */
     I2C_OPEN_ERR,     /**< Error opening I2C bus */
     I2C_ADDR_SET_ERR, /**< Error setting I2C slave address */
-    FAIL_TO_WR_GYRO,  /**< Error writing to gyroscope */
-    FAIL_TO_RD_GYRO,   /**< Error reading from gyroscope */
-    INITIALIZATION_FAILED, /**< Error setting power mode */
-    DATA_READ_FAILED, /**< Error data read */
+    SENSOR_WAKE_FAIL, /**< Error setting power mode */
     I2C_WRITE_ERR,
     I2C_READ_ERR
 };
@@ -72,17 +69,17 @@ public:
 
     /**
      * @brief Read gyroscope data from sensor
-     * @details Reads the X, Y, and Z axis data from the  gyroscope sensor using the I2C interface.
+     * @details Reads the X, Y, and Z axis data as degree per second from the gyroscope sensor using the I2C interface.
      * @return GyroError status of the operation.
      */
     GyroscopeData getGyroData();
 
 private:
-    string device;              /**< I2C device file */
-    int mFileDescriptor;        /**< File descriptor for I2C communication */
-    static const uint8_t SENSOR_ADDR;         /**< I2C address of sensor */
-    static const string I2C_BUS;         /**< I2C bus device file */
-    static const uint8_t SENSOR_REG_GYRO_XOUT_H; /**< Register address for gyro X-axis high byte output */
+    string device;                                      /**< I2C device file */
+    int mFileDescriptor;                                /**< File descriptor for I2C communication */
+    static const uint8_t SENSOR_ADDR;                   /**< I2C address of sensor */
+    static const string I2C_BUS;                        /**< I2C bus device file */
+    static const uint8_t SENSOR_REG_GYRO_XOUT_H;        /**< Register address for gyro X-axis high byte output */
     static const uint8_t SENSOR_REG_POWER_CTL;
     static const uint8_t SENSOR_REG_DATAX0;
     static const uint8_t SENSOR_MEASURE_MODE;
@@ -95,6 +92,7 @@ private:
     static const int X_AXIS_START_VALUE;
     static const int Y_AXIS_START_VALUE;
     static const int Z_AXIS_START_VALUE;
+    static const int BUFFER_START_VALUE;
 
     /**
      * @brief Reads gyroscope data from the sensor
